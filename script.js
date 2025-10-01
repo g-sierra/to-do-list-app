@@ -18,10 +18,6 @@ const storeData = () => {
   localStorage.setItem("tasks", JSON.stringify(state.tasks));
 };
 
-const logData = () => {
-  console.log(state.tasks); // for debugging
-};
-
 /* Initialize State */
 const state = {
   tasks: getData() || [],
@@ -31,7 +27,6 @@ const state = {
 const setState = (callback) => {
   callback();
   storeData();
-  logData();
   render();
 };
 
