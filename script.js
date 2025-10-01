@@ -5,12 +5,11 @@ const addBtn = d.querySelector("#add-btn");
 const taskInput = d.querySelector("#task-input");
 const taskList = d.querySelector("#task-list");
 
-/* Initialize State */
-const state = {
-  tasks: getData() || [],
-};
+/* localeStorage data management */
+function getData() {
+  return JSON.parse(localStorage.getItem("tasks"));
+}
 
-/* localeStorage helpers */
 function storeData() {
   if (state.tasks.length === 0) {
     localStorage.removeItem("tasks");
@@ -19,14 +18,20 @@ function storeData() {
   localStorage.setItem("tasks", JSON.stringify(state.tasks));
 }
 
-function getData() {
-  return JSON.parse(localStorage.getItem("tasks"));
+function logData() {
+  console.log(state.tasks);  // for debugging
 }
+
+/* Initialize State */
+const state = {
+  tasks: getData() || [],
+};
 
 /* State management */
 function setState(callback) {
   callback();
   storeData();
+  logData();
   render();
 }
 
@@ -54,10 +59,6 @@ function clearTasks() {
   setState(() => {
     state.tasks = [];
   });
-}
-
-function logTasks() {
-  console.log(state.tasks);
 }
 
 /* Render */
@@ -102,7 +103,6 @@ function render() {
   clearBtn.addEventListener("click", clearTasks);
 
   taskList.append(clearBtn);
-  logTasks();
 }
 
 /* Event Listeners */
