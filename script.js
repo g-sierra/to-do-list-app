@@ -47,8 +47,6 @@ function addTask() {
     state.tasks.push(task);
   });
 
-  logTasks();
-
   taskInput.value = "";
 }
 
@@ -77,7 +75,7 @@ function render() {
     return;
   }
 
-  tasks.forEach((task) => {
+  tasks.forEach((task, idx) => {
     const li = d.createElement("li");
     li.className = "task-item";
 
@@ -87,6 +85,10 @@ function render() {
     const btn = d.createElement("button");
     btn.className = "btn btn-remove";
     btn.textContent = "X";
+
+    btn.addEventListener("click", () => {
+      setState(() => state.tasks.splice(idx, 1));
+    });
 
     li.append(span, btn);
 
@@ -100,10 +102,8 @@ function render() {
   clearBtn.addEventListener("click", clearTasks);
 
   taskList.append(clearBtn);
+  logTasks();
 }
-
-storeTasks();
-logTasks();
 
 /* Event Listeners */
 addBtn.addEventListener("click", addTask);
