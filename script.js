@@ -6,21 +6,21 @@ const taskInput = d.querySelector("#task-input");
 const taskList = d.querySelector("#task-list");
 
 /* localeStorage data management */
-function getData() {
+const getData = () => {
   return JSON.parse(localStorage.getItem("tasks"));
-}
+};
 
-function storeData() {
+const storeData = () => {
   if (state.tasks.length === 0) {
     localStorage.removeItem("tasks");
     return;
   }
   localStorage.setItem("tasks", JSON.stringify(state.tasks));
-}
+};
 
-function logData() {
-  console.log(state.tasks);  // for debugging
-}
+const logData = () => {
+  console.log(state.tasks); // for debugging
+};
 
 /* Initialize State */
 const state = {
@@ -28,15 +28,15 @@ const state = {
 };
 
 /* State management */
-function setState(callback) {
+const setState = (callback) => {
   callback();
   storeData();
   logData();
   render();
-}
+};
 
 /* Task management */
-function addTask() {
+const addTask = () => {
   const text = taskInput.value.trim();
   if (!text) return;
 
@@ -53,16 +53,16 @@ function addTask() {
   });
 
   taskInput.value = "";
-}
+};
 
-function clearTasks() {
+const clearTasks = () => {
   setState(() => {
     state.tasks = [];
   });
-}
+};
 
 /* Render */
-function render() {
+const render = () => {
   const { tasks } = state;
 
   taskList.innerHTML = "";
@@ -103,7 +103,7 @@ function render() {
   clearBtn.addEventListener("click", clearTasks);
 
   taskList.append(clearBtn);
-}
+};
 
 /* Event Listeners */
 addBtn.addEventListener("click", addTask);
