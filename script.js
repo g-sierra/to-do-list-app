@@ -1,32 +1,37 @@
+/* Constants / DOM Elements */
 const d = document;
 
-/* DOM Elements */
 const addBtn = d.querySelector("#add-btn");
 const taskInput = d.querySelector("#task-input");
 const taskList = d.querySelector("#task-list");
 
-/* State management functions */
-const setState = (callback) => {
-  callback();
-  render();
+/* Initialize State */
+const state = {
+  tasks: getData() || [],
 };
 
-const storeTasks = () => {
-  if (state.tasks.length === 0) return;
+/* localeStorage helpers */
+function storeData() {
+  if (state.tasks.length === 0) {
+    localStorage.removeItem("tasks");
+    return;
+  }
   localStorage.setItem("tasks", JSON.stringify(state.tasks));
-};
+}
 
-const getTasks = () => {
+function getData() {
   return JSON.parse(localStorage.getItem("tasks"));
-};
+}
 
-const clearTasks = () => {
-  localStorage.removeItem("tasks");
-};
+/* State management */
+function setState(callback) {
+  callback();
+  storeData();
+  render();
+}
 
-const logTasks = () => console.log(state.tasks);
-
-const addTask = () => {
+/* Task management */
+function addTask() {
   const text = taskInput.value.trim();
   if (!text) return;
 
@@ -42,14 +47,23 @@ const addTask = () => {
     state.tasks.push(task);
   });
 
-  storeTasks();
   logTasks();
-  
+
   taskInput.value = "";
-};
+}
+
+function clearTasks() {
+  setState(() => {
+    state.tasks = [];
+  });
+}
+
+function logTasks() {
+  console.log(state.tasks);
+}
 
 /* Render */
-const render = () => {
+function render() {
   const { tasks } = state;
 
   taskList.innerHTML = "";
@@ -83,23 +97,10 @@ const render = () => {
   clearBtn.className = "btn btn-clear";
   clearBtn.textContent = "Clear all";
 
-  clearBtn.addEventListener("click", () => {
-    clearTasks();
-
-    setState(() => {
-      state.tasks = [];
-    });
-
-    storeTasks();
-  });
+  clearBtn.addEventListener("click", clearTasks);
 
   taskList.append(clearBtn);
-};
-
-/* Initialize State */
-const state = {
-  tasks: getTasks() || [],
-};
+}
 
 storeTasks();
 logTasks();
