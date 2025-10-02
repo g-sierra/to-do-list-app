@@ -93,7 +93,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100vh;
   font-family: var(--ff-mono);
   line-height: var(--lh-base);
   background-color: var(--color-bg);
@@ -141,6 +141,11 @@ table {
 
 /* styling */
 
+.wrapper {
+  min-height: 100vh;
+  padding-block: 4rem;
+}
+
 .app {
   max-width: 600px;
   margin: 0 auto;
@@ -152,7 +157,6 @@ table {
   padding: 2rem;
   border: 3px solid var(--color-border);
   border-radius: var(--border-radius);
-  margin-top: 4rem;
 }
 
 .title {
@@ -275,4 +279,14 @@ table {
   padding: 1rem;
   text-align: center;
   color: var(--color-muted);
+}
+
+/* footer starts at bottom of page and gets pushed down by content */
+footer {
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.footer-text {
+  text-align: center;
 }

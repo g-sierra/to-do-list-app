@@ -7,20 +7,34 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="app">
-      <h1 class="title">TO DO LIST</h1>
-      <div class="input-container">
-        <input
-          type="text"
-          class="task-input"
-          id="task-input"
-          placeholder="Enter a task..."
-        />
-        <button class="btn btn-primary" id="add-btn">Add</button>
+    <div class="wrapper">
+      <div class="app">
+        <h1 class="title">TO DO LIST</h1>
+        <div class="input-container">
+          <input
+            type="text"
+            class="task-input"
+            id="task-input"
+            placeholder="Enter a task..."
+          />
+          <button class="btn btn-primary" id="add-btn">Add</button>
+        </div>
+        <div class="task-container" id="task-container"></div>
       </div>
-      <div class="task-container" id="task-container"></div>
-    </div>
 
+      <footer>
+        <p class="footer-text">
+          github:
+          <a class="footer-link" href="https://github.com/g-sierra">
+            g-sierra
+          </a> -
+          theme:
+          <a class="footer-link" href="https://github.com/morhetz/gruvbox">
+            gruvbox
+          </a>
+        </p>
+      </footer>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
