@@ -102,9 +102,14 @@ const render = () => {
       });
     });
 
+    /* add remove button to each task */
     const btn = d.createElement("button");
     btn.className = "btn btn-remove";
-    btn.textContent = "X";
+
+    const i = d.createElement("i");
+    i.className = "fa-solid fa-trash";
+
+    btn.append(i);
 
     btn.addEventListener("click", () => {
       setState(() => state.tasks.splice(idx, 1));
