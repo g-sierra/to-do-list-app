@@ -1,69 +1,38 @@
-/*
-  colors from https://github.com/morhetz/gruvbox
-  --bg0: #282828;
-  --bg1: #3c3836;
-  --bg2: #504945;
-  --bg3: #665c54;
-  --bg4: #7c6f64;
+/* import color variables */
+@import url(./gruvbox-colors.css);
 
-  --fg0: #fbf1c7;
-  --fg1: #ebdbb2;
-  --fg2: #d5c4a1;
-  --fg3: #bdae93;
-  --fg4: #a89984;
-
-  --red: #cc241d;
-  --green: #98971a;
-  --yellow: #d79921;
-  --blue: #458588;
-  --purple: #b16286;
-  --aqua: #689d6a;
-  --orange: #d65d0e;
-  --gray: #928374;
-
-  --bright-red: #fb4934;
-  --bright-green: #b8bb26;
-  --bright-yellow: #fabd2f;
-  --bright-blue: #83a598;
-  --bright-purple: #d3869b;
-  --bright-aqua: #8ec07c;
-  --bright-orange: #fe8019;
-  --bright-gray: #a89984;
-*/
-
-/* variables */
 :root {
   /* theming */
-  --color-bg: #282828;
-  --color-bg-alt: #3c3836;
-  --color-surface: #504945;
-  --color-border: #665c54;
-  --color-border-alt: #7c6f64;
+  --clr-bg: var(--bg0);
+  --clr-bg-alt: var(--bg1);
+  --clr-surface: var(--bg2);
+  --clr-border: var(--bg3);
+  --clr-border-alt: var(--bg4);
 
-  --color-text: #fbf1c7;
-  --color-text-alt: #d5c4a1;
-  --color-muted: #a89984;
+  --clr-text: var(--fg0);
+  --clr-text-alt: var(--fg2);
+  --clr-muted: var(--fg4);
 
-  --color-primary: #fe8019; /* bright orange */
-  --color-primary-hover: #d65d0e; /* orange */
+  --clr-primary: var(--bright-orange);
+  --clr-primary-hover: var(--orange);
 
-  --color-secondary: #d3869b; /* bright purple */
-  --color-secondary-hover: #b16286; /* purple */
+  --clr-secondary: var(--bright-purple);
+  --clr-secondary-hover: var(--purple);
 
-  --color-success: #b8bb26; /* bright green */
-  --color-success-hover: #98971a; /* green */
+  --clr-success: var(--bright-green);
+  --clr-success-hover: var(--green);
 
-  --color-warning: #fabd2f; /* bright yellow */
-  --color-warning-hover: #d79921; /* yellow */
+  --clr-warning: var(--bright-yellow);
+  --clr-warning-hover: var(--yellow);
 
-  --color-error: #fb4934; /* bright red */
-  --color-error-hover: #cc241d; /* red */
+  --clr-error: var(--bright-red);
+  --clr-error-hover: var(--red);
 
-  --color-accent: #83a598; /* bright blue */
-  --color-accent-hover: #458588; /* blue */
+  --clr-accent: var(--bright-blue);
+  --clr-accent-hover: var(--blue);
 
-  --color-info: #8ec07c; /* bright aqua */
-  --color-info-hover: #689d6a; /* aqua */
+  --clr-info: var(--bright-aqua);
+  --clr-info-hover: var(--aqua);
 
   /* typography */
   --ff-sans: system-ui, sans-serif;
@@ -101,8 +70,8 @@ body {
   min-height: 100vh;
   font-family: var(--ff-mono);
   line-height: var(--lh-base);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
 }
 
 ul,
@@ -158,9 +127,9 @@ table {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-bg-alt);
+  background-color: var(--clr-bg-alt);
   padding: 2rem;
-  border: 3px solid var(--color-border);
+  border: 3px solid var(--clr-border);
   border-radius: var(--border-radius);
 }
 
@@ -181,17 +150,17 @@ table {
   flex: 1;
   margin-right: 1rem;
   padding: 0.5rem;
-  background-color: var(--color-surface);
-  border: 2px solid var(--color-border);
+  background-color: var(--clr-surface);
+  border: 2px solid var(--clr-border);
   border-radius: var(--border-radius);
 }
 
 .task-input::placeholder {
-  color: var(--color-muted);
+  color: var(--clr-muted);
 }
 
 .task-input:focus {
-  border-color: var(--color-primary);
+  border-color: var(--clr-primary);
 }
 
 .btn {
@@ -204,13 +173,13 @@ table {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+  background-color: var(--clr-primary);
+  color: var(--clr-bg);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-hover);
-  color: var(--color-text);
+  background-color: var(--clr-primary-hover);
+  color: var(--clr-text);
 }
 
 .task-container {
@@ -221,18 +190,18 @@ table {
 
 .task-list {
   margin-bottom: 2rem;
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--clr-border);
   border-radius: var(--border-radius);
   overflow: hidden;
 }
 
 .task-item {
-  background-color: var(--color-surface);
+  background-color: var(--clr-surface);
   padding: 0.5rem 1rem;
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--clr-border);
 }
 
 .task-item:nth-last-child(1) {
@@ -248,27 +217,27 @@ table {
 }
 
 .task-text:hover {
-  color: var(--color-text-alt);
+  color: var(--clr-text-alt);
   cursor: pointer;
 }
 
 .task-done {
   text-decoration: line-through;
-  color: var(--color-muted);
+  color: var(--clr-muted);
 }
 
 .task-text.task-done:hover {
-  color: var(--color-muted);
+  color: var(--clr-muted);
 }
 
 .btn-remove {
-  background-color: var(--color-error);
-  color: var(--color-text);
+  background-color: var(--clr-error);
+  color: var(--clr-text);
   padding: 0.25rem 0.5rem;
 }
 
 .btn-remove:hover {
-  background-color: var(--color-error-hover);
+  background-color: var(--clr-error-hover);
 }
 
 .ui-btn-group {
@@ -289,21 +258,21 @@ table {
 }
 
 .btn-clear {
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--clr-border);
   padding: 0.25rem 0.5rem;
 
 }
 
 .btn-clear:hover {
-  background-color: var(--color-error);
-  color: var(--color-text);
+  background-color: var(--clr-error);
+  color: var(--clr-text);
 }
 
 .info-message {
-  background-color: var(--color-surface);
+  background-color: var(--clr-surface);
   padding: 1rem;
   text-align: center;
-  color: var(--color-muted);
+  color: var(--clr-muted);
 }
 
 footer {
@@ -313,15 +282,15 @@ footer {
 
 .footer-text {
   text-align: center;
-  color: var(--color-muted);
+  color: var(--clr-muted);
   font-size: var(--fs-sm);
   font-weight: var(--fw-light);
 }
 
 .footer-link {
-  color: var(--color-primary)
+  color: var(--clr-primary)
 }
 
 .footer-link:hover {
-  color: var(--color-primary-hover)
+  color: var(--clr-primary-hover)
 }
