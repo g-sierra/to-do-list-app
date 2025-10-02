@@ -56,6 +56,8 @@ const clearTasks = () => {
   });
 };
 
+// TODO: filter tasks function
+
 /* Render */
 const render = () => {
   const { tasks } = state;
@@ -82,7 +84,19 @@ const render = () => {
 
     const span = d.createElement("span");
     span.className = "task-text";
+    if (state.tasks[idx].done) {
+      span.classList.add("task-done");
+    } else {
+      span.classList.remove("task-done");
+    }
     span.textContent = task.text;
+
+    /* event listener for toggling done state */
+    span.addEventListener("click", () => {
+      setState(() => {
+        state.tasks[idx].done = !state.tasks[idx].done;
+      });
+    });
 
     const btn = d.createElement("button");
     btn.className = "btn btn-remove";
@@ -97,7 +111,7 @@ const render = () => {
     taskList.append(li);
   });
 
-  /* ui buttons */
+  /* UI Buttons */
   const uiBtnGroup = d.createElement("div");
   uiBtnGroup.className = "ui-btn-group";
 
@@ -108,6 +122,9 @@ const render = () => {
   clearCompletedBtn.id = "clear-completed-btn";
   clearCompletedBtn.textContent = "Clear completed tasks";
 
+  // TODO: implement this
+  // clearCompletedBtn.addEventListener("click", filterTasks);
+
   const clearAllBtn = d.createElement("button");
   clearAllBtn.className = "btn btn-clear";
   clearAllBtn.id = "clear-all-btn";
@@ -115,7 +132,7 @@ const render = () => {
 
   clearAllBtn.addEventListener("click", () => {
     clearTasks();
-    clearAllBtn.remove();
+    uiBtnGroup.remove();
   });
 
   uiBtnGroup.append(clearCompletedBtn);
