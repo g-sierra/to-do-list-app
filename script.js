@@ -56,7 +56,11 @@ const clearTasks = () => {
   });
 };
 
-// TODO: filter tasks function
+const filterTasks = () => {
+  setState(() => {
+    state.tasks = state.tasks.filter((task) => !task.done);
+  });
+};
 
 /* Render */
 const render = () => {
@@ -122,8 +126,7 @@ const render = () => {
   clearCompletedBtn.id = "clear-completed-btn";
   clearCompletedBtn.textContent = "Clear completed tasks";
 
-  // TODO: implement this
-  // clearCompletedBtn.addEventListener("click", filterTasks);
+  clearCompletedBtn.addEventListener("click", filterTasks);
 
   const clearAllBtn = d.createElement("button");
   clearAllBtn.className = "btn btn-clear";
