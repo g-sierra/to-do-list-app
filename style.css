@@ -1,0 +1,278 @@
+/*
+  colors from https://github.com/morhetz/gruvbox
+  --bg0: #282828;
+  --bg1: #3c3836;
+  --bg2: #504945;
+  --bg3: #665c54;
+  --bg4: #7c6f64;
+
+  --fg0: #fbf1c7;
+  --fg1: #ebdbb2;
+  --fg2: #d5c4a1;
+  --fg3: #bdae93;
+  --fg4: #a89984;
+
+  --red: #cc241d;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458588;
+  --purple: #b16286;
+  --aqua: #689d6a;
+  --orange: #d65d0e;
+  --gray: #928374;
+
+  --bright-red: #fb4934;
+  --bright-green: #b8bb26;
+  --bright-yellow: #fabd2f;
+  --bright-blue: #83a598;
+  --bright-purple: #d3869b;
+  --bright-aqua: #8ec07c;
+  --bright-orange: #fe8019;
+  --bright-gray: #a89984;
+*/
+
+/* variables */
+:root {
+  /* theming */
+  --color-bg: #282828;
+  --color-bg-alt: #3c3836;
+  --color-surface: #504945;
+  --color-border: #665c54;
+  --color-border-alt: #7c6f64;
+
+  --color-text: #fbf1c7;
+  --color-text-alt: #d5c4a1;
+  --color-muted: #a89984;
+
+  --color-primary: #fe8019; /* bright orange */
+  --color-primary-hover: #d65d0e; /* orange */
+
+  --color-secondary: #d3869b; /* bright purple */
+  --color-secondary-hover: #b16286; /* purple */
+
+  --color-success: #b8bb26; /* bright green */
+  --color-success-hover: #98971a; /* green */
+
+  --color-warning: #fabd2f; /* bright yellow */
+  --color-warning-hover: #d79921; /* yellow */
+
+  --color-error: #fb4934; /* bright red */
+  --color-error-hover: #cc241d; /* red */
+
+  --color-accent: #83a598; /* bright blue */
+  --color-accent-hover: #458588; /* blue */
+
+  --color-info: #8ec07c; /* bright aqua */
+  --color-info-hover: #689d6a; /* aqua */
+
+  /* typography */
+  --ff-sans: system-ui, sans-serif;
+  --ff-mono: "Fira Code", "JetBrains Mono", monospace;
+
+  --lh-base: 1.5;
+
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-base: 1rem; /* 16px */
+  --fs-md: 1.125rem; /* 18px */
+  --fs-lg: 1.25rem; /* 20px */
+  --fs-xl: 1.5rem; /* 24px */
+  --fs-2xl: 2rem; /* 32px */
+
+  --border-radius: 0.5rem;
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--ff-mono);
+  line-height: var(--lh-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* styling */
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-alt);
+  padding: 2rem;
+  border: 3px solid var(--color-border);
+  border-radius: var(--border-radius);
+  margin-top: 4rem;
+}
+
+.title {
+  font-size: var(--fs-2xl);
+  margin-bottom: 1rem;
+}
+
+.input-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.task-input {
+  flex: 1;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.task-input::placeholder {
+  color: var(--color-muted);
+}
+
+.task-input:focus {
+  border-color: var(--color-primary);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition:
+    background-color 0.1s,
+    color 0.1s;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-text);
+}
+
+.task-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-list {
+  margin-bottom: 2rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.task-item {
+  background-color: var(--color-surface);
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.task-item:nth-last-child(1) {
+  border-bottom: none;
+}
+
+.task-item > * {
+  align-self: center;
+}
+
+.task-text:hover {
+  color: var(--color-text-alt);
+  cursor: pointer;
+}
+
+.task-done {
+  text-decoration: line-through;
+  color: var(--color-muted);
+}
+
+.task-text.task-done:hover {
+  color: var(--color-muted);
+}
+
+.btn-remove {
+  background-color: var(--color-error);
+  color: var(--color-text);
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-remove:hover {
+  background-color: var(--color-error-hover);
+}
+
+.btn-clear {
+  /* background-color: var(--color-warning); */
+  /* color: var(--color-bg); */
+  border: 2px solid var(--color-border);
+  padding: 0.25rem 0.5rem;
+  flex-grow: 0;
+  align-self: flex-end;
+}
+
+.btn-clear:hover {
+  background-color: var(--color-error);
+  color: var(--color-text);
+}
+
+.info-message {
+  background-color: var(--color-surface);
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-muted);
+}

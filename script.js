@@ -3,7 +3,7 @@ const d = document;
 
 const addBtn = d.querySelector("#add-btn");
 const taskInput = d.querySelector("#task-input");
-const taskList = d.querySelector("#task-list");
+const taskContainer = d.querySelector("#task-container");
 
 /* localeStorage data management */
 const getData = () => {
@@ -60,7 +60,12 @@ const clearTasks = () => {
 const render = () => {
   const { tasks } = state;
 
-  taskList.innerHTML = "";
+  taskContainer.innerHTML = "";
+
+  const taskList = d.createElement("ul");
+  taskList.className = "task-list";
+
+  taskContainer.append(taskList);
 
   if (tasks.length === 0) {
     const p = d.createElement("p");
@@ -76,6 +81,7 @@ const render = () => {
     li.className = "task-item";
 
     const span = d.createElement("span");
+    span.className = "task-text";
     span.textContent = task.text;
 
     const btn = d.createElement("button");
@@ -95,9 +101,12 @@ const render = () => {
   clearBtn.className = "btn btn-clear";
   clearBtn.textContent = "Clear all";
 
-  clearBtn.addEventListener("click", clearTasks);
+  clearBtn.addEventListener("click", () => {
+    clearTasks();
+    clearBtn.remove();
+  });
 
-  taskList.append(clearBtn);
+  taskContainer.append(clearBtn);
 };
 
 /* Event Listeners */
