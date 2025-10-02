@@ -97,16 +97,29 @@ const render = () => {
     taskList.append(li);
   });
 
-  const clearBtn = d.createElement("button");
-  clearBtn.className = "btn btn-clear";
-  clearBtn.textContent = "Clear all";
+  /* ui buttons */
+  const uiBtnGroup = d.createElement("div");
+  uiBtnGroup.className = "ui-btn-group";
 
-  clearBtn.addEventListener("click", () => {
+  taskContainer.append(uiBtnGroup);
+
+  const clearCompletedBtn = d.createElement("button");
+  clearCompletedBtn.className = "btn btn-clear";
+  clearCompletedBtn.id = "clear-completed-btn";
+  clearCompletedBtn.textContent = "Clear completed tasks";
+
+  const clearAllBtn = d.createElement("button");
+  clearAllBtn.className = "btn btn-clear";
+  clearAllBtn.id = "clear-all-btn";
+  clearAllBtn.textContent = "Clear all tasks";
+
+  clearAllBtn.addEventListener("click", () => {
     clearTasks();
-    clearBtn.remove();
+    clearAllBtn.remove();
   });
 
-  taskContainer.append(clearBtn);
+  uiBtnGroup.append(clearCompletedBtn);
+  uiBtnGroup.append(clearAllBtn);
 };
 
 /* Event Listeners */
