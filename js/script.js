@@ -35,11 +35,9 @@ const addTask = () => {
   const text = taskInput.value.trim();
   if (!text) return;
 
-  const now = new Date();
-
   const task = {
+    id: Date.now(),
     text: text,
-    date: now.toISOString(),
     done: false,
   };
 
@@ -50,9 +48,23 @@ const addTask = () => {
   taskInput.value = "";
 };
 
+const removeTask = (id, taskElement) => {
+  const newTasks = state.tasks.filter((task) => task.id !== id);
+  setState(() => {
+    state.tasks = newTasks;
+  });
+  taskElement.remove();
+};
+
 const clearTasks = () => {
   setState(() => {
     state.tasks = [];
+  });
+};
+
+const toggleTaskDone = (task) => {
+  setState(() => {
+    task.done = !task.done;
   });
 };
 
@@ -63,88 +75,93 @@ const filterTasks = () => {
 };
 
 /* Render */
-const render = () => {
-  const { tasks } = state;
+const createElement = (tag, classes = [], text = "", id = "") => {
+  const el = d.createElement(tag);
+  if (classes.length) el.classList.add(...classes);
+  if (text) el.textContent = text;
+  if (id) el.id = id;
+  return el;
+};
 
-  taskContainer.innerHTML = "";
+const createRemoveBtn = (id, taskElement) => {
+  const btn = d.createElement("button");
+  btn.className = "btn btn-remove";
 
-  const taskList = d.createElement("ul");
-  taskList.className = "task-list";
+  const i = d.createElement("i");
+  i.className = "fa-solid fa-trash";
 
-  taskContainer.append(taskList);
+  btn.append(i);
 
-  if (tasks.length === 0) {
-    const p = d.createElement("p");
-    p.className = "info-message";
-    p.textContent = "No pending tasks";
+  btn.addEventListener("click", () => removeTask(id, taskElement));
 
-    taskList.append(p);
-    return;
-  }
+  return btn;
+};
 
-  tasks.forEach((task, idx) => {
-    const li = d.createElement("li");
-    li.className = "task-item";
+const createTaskItem = (task) => {
+  const li = createElement("li", ["task-item"]);
 
-    const span = d.createElement("span");
-    span.className = "task-text";
-    if (state.tasks[idx].done) {
-      span.classList.add("task-done");
-    } else {
-      span.classList.remove("task-done");
-    }
-    span.textContent = task.text;
+  const span = createElement("span", ["task-text"], task.text);
+  span.classList.toggle("task-done", task.done);
 
-    /* event listener for toggling done state */
-    span.addEventListener("click", () => {
-      setState(() => {
-        state.tasks[idx].done = !state.tasks[idx].done;
-      });
-    });
+  /* event listener for toggling done state */
+  span.addEventListener("click", () => toggleTaskDone(task));
 
-    /* add remove button to each task */
-    const btn = d.createElement("button");
-    btn.className = "btn btn-remove";
+  /* add remove button to each task */
+  const btn = createRemoveBtn(task.id, li);
 
-    const i = d.createElement("i");
-    i.className = "fa-solid fa-trash";
+  li.append(span, btn);
 
-    btn.append(i);
+  return li;
+};
 
-    btn.addEventListener("click", () => {
-      setState(() => state.tasks.splice(idx, 1));
-    });
+const createUIBtnGroup = () => {
+  const group = createElement("div", ["ui-btn-group"]);
 
-    li.append(span, btn);
-
-    taskList.append(li);
-  });
-
-  /* UI Buttons */
-  const uiBtnGroup = d.createElement("div");
-  uiBtnGroup.className = "ui-btn-group";
-
-  taskContainer.append(uiBtnGroup);
-
-  const clearCompletedBtn = d.createElement("button");
-  clearCompletedBtn.className = "btn btn-clear";
-  clearCompletedBtn.id = "clear-completed-btn";
-  clearCompletedBtn.textContent = "Clear completed tasks";
-
+  const clearCompletedBtn = createElement(
+    "button",
+    ["btn", "btn-clear"],
+    "Clear completed tasks",
+    "clear-completed-btn",
+  );
   clearCompletedBtn.addEventListener("click", filterTasks);
 
-  const clearAllBtn = d.createElement("button");
-  clearAllBtn.className = "btn btn-clear";
-  clearAllBtn.id = "clear-all-btn";
-  clearAllBtn.textContent = "Clear all tasks";
-
+  const clearAllBtn = createElement(
+    "button",
+    ["btn", "btn-clear"],
+    "Clear all tasks",
+    "clear-all-btn",
+  );
   clearAllBtn.addEventListener("click", () => {
     clearTasks();
     uiBtnGroup.remove();
   });
 
-  uiBtnGroup.append(clearCompletedBtn);
-  uiBtnGroup.append(clearAllBtn);
+  group.append(clearCompletedBtn);
+  group.append(clearAllBtn);
+
+  return group;
+};
+
+const render = () => {
+  const { tasks } = state;
+  const fragment = d.createDocumentFragment();
+
+  const taskList = createElement("ul", ["task-list"]);
+
+  if (tasks.length === 0) {
+    taskList.append(createElement("p", ["info-message"], "No pending tasks"));
+    return;
+  } else {
+    tasks.forEach((task) => {
+      taskList.append(createTaskItem(task));
+    });
+  }
+
+  fragment.append(taskList);
+  fragment.append(createUIBtnGroup());
+
+  taskContainer.innerHTML = "";
+  taskContainer.append(fragment);
 };
 
 /* Event Listeners */
