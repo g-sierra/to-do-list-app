@@ -24,8 +24,8 @@ const state = {
 };
 
 /* State management */
-const setState = (callback) => {
-  callback();
+const setState = (updater) => {
+  updater();
   storeData();
   render();
 };
