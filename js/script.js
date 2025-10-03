@@ -31,8 +31,8 @@ const setState = (callback) => {
 };
 
 /* Task management */
-const addTask = () => {
-  const text = taskInput.value.trim();
+const getTaskFromInput = (inputElement) => {
+  const text = inputElement.value.trim();
   if (!text) return;
 
   const task = {
@@ -41,11 +41,15 @@ const addTask = () => {
     done: false,
   };
 
+  inputElement.value = "";
+
+  return task;
+};
+
+const addTask = (task) => {
   setState(() => {
     state.tasks.push(task);
   });
-
-  taskInput.value = "";
 };
 
 const removeTask = (id, taskElement) => {
@@ -165,10 +169,12 @@ const render = () => {
 };
 
 /* Event Listeners */
-addBtn.addEventListener("click", addTask);
+addBtn.addEventListener("click", () => {
+  addTask(getTaskFromInput(taskInput));
+});
 taskInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    addTask();
+    addTask(getTaskFromInput(taskInput));
   }
 });
 
