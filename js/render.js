@@ -74,7 +74,7 @@ const renderTaskList = () => {
   fragment.append(taskList);
 
   if (tasks.length === 0) {
-    taskList.append(createElement("p", ["info-message"], "No pending tasks"));
+    taskList.append(createElement("li", ["info-message"], "No pending tasks"));
   } else {
     tasks.forEach((task) => {
       taskList.append(createTaskItem(task));
