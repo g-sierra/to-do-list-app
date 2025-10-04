@@ -1,6 +1,6 @@
 import { d, taskInput, addBtn } from "./dom.js";
 import { getTaskFromInput, addTask } from "./tasks.js";
-import renderTaskList from "./render.js";
+import { renderTaskList } from "./render.js";
 
 const handleAdd = () => {
   const newTask = getTaskFromInput(taskInput);

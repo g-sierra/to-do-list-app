@@ -63,7 +63,7 @@ const createUIBtnGroup = () => {
   return group;
 };
 
-const renderTaskList = () => {
+export const renderTaskList = () => {
   const { tasks } = state;
 
   const fragment = d.createDocumentFragment();
@@ -82,5 +82,3 @@ const renderTaskList = () => {
   taskContainer.innerHTML = "";
   taskContainer.append(fragment);
 };
-
-export default renderTaskList;

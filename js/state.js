@@ -1,4 +1,4 @@
-import renderTaskList from "./render.js";
+import { renderTaskList } from "./render.js";
 
 const getData = () => {
   return JSON.parse(localStorage.getItem("tasks"));
