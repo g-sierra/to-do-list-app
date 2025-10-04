@@ -22,9 +22,8 @@ export const addTask = (task) => {
 };
 
 export const removeTask = (id) => {
-  const newTasks = state.tasks.filter((task) => task.id !== id);
   setState(() => {
-    state.tasks = newTasks;
+    state.tasks = state.tasks.filter((task) => task.id !== id);
   });
 };
 
