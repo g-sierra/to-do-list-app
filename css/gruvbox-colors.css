@@ -33,7 +33,8 @@
   --bright-gray: #a89984;
 }
 
-/* light mode */
+/* light mode -- unused */
+/*
 :root[data-theme="light"] {
   --bg0: #fbf1c7;
   --bg1: #ebdbb2;
@@ -47,21 +48,22 @@
   --fg3: #665c54;
   --fg4: #7c6f64;
 
-  --red: #cc241d;
-  --green: #98971a;
-  --yellow: #d79921;
-  --blue: #458588;
-  --purple: #b16286;
-  --aqua: #689d6a;
-  --orange: #d65d0e;
-  --gray: #928374;
+  --red: #9d0006;
+  --green: #79740e;
+  --yellow: #b57614;
+  --blue: #076678;
+  --purple: #8f3f71;
+  --aqua: #427b58;
+  --orange: #af3a03;
+  --gray: #7c6f64;
 
-  --bright-red: #9d0006;
-  --bright-green: #79740e;
-  --bright-yellow: #b57614;
-  --bright-blue: #076678;
-  --bright-purple: #8f3f71;
-  --bright-aqua: #427b58;
-  --bright-orange: #af3a03;
-  --bright-gray: #7c6f64;
+  --bright-red: #cc241d;
+  --bright-green: #98971a;
+  --bright-yellow: #d79921;
+  --bright-blue: #458588;
+  --bright-purple: #b16286;
+  --bright-aqua: #689d6a;
+  --bright-orange: #d65d0e;
+  --bright-gray: #928374;
 }
+*/
