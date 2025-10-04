@@ -35,14 +35,14 @@ export const clearTasks = () => {
   });
 };
 
-export const toggleTaskDone = (task) => {
-  setState(() => {
-    task.done = !task.done;
-  });
-};
-
 export const filterTasks = () => {
   setState(() => {
     state.tasks = state.tasks.filter((task) => !task.done);
+  });
+};
+
+export const toggleTaskDone = (task) => {
+  setState(() => {
+    task.done = !task.done;
   });
 };
