@@ -1,6 +1,6 @@
 import { d, taskInput, addBtn } from "./dom.js";
 import { getTaskFromInput, addTask } from "./tasks.js";
-import { renderTaskList } from "./render.js";
+import { renderState } from "./render.js";
 
 const handleAdd = () => {
   const newTask = getTaskFromInput(taskInput);
@@ -13,7 +13,7 @@ const main = () => {
     if (e.key === "Enter") handleAdd();
   });
 
-  renderTaskList();
+  renderState();
 };
 
 d.addEventListener("DOMContentLoaded", main);

@@ -1,4 +1,4 @@
-import { renderTaskList } from "./render.js";
+import { renderState } from "./render.js";
 
 const getData = () => {
   return JSON.parse(localStorage.getItem("tasks"));
@@ -19,5 +19,5 @@ export const state = {
 export const setState = (updater) => {
   updater();
   storeData();
-  renderTaskList();
+  renderState();
 };

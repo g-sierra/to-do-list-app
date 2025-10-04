@@ -64,7 +64,7 @@ const createUIBtnGroup = () => {
   return group;
 };
 
-export const renderTaskList = () => {
+export const renderState = () => {
   const { tasks } = state;
 
   const fragment = d.createDocumentFragment();
