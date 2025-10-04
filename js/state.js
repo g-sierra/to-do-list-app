@@ -1,4 +1,4 @@
-import { renderState } from "./render.js";
+import { publish } from "./pubsub.js";
 
 const getData = () => {
   return JSON.parse(localStorage.getItem("tasks"));
@@ -16,8 +16,9 @@ export const state = {
   tasks: getData() || [],
 };
 
-export const setState = (updater) => {
+export const setState = (updater, event = null, payload = null) => {
   updater();
   storeData();
-  renderState();
+
+  if (event) publish(event, payload);
 };

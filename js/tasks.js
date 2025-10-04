@@ -18,29 +18,29 @@ export const getTaskFromInput = (inputElement) => {
 export const addTask = (task) => {
   setState(() => {
     state.tasks.push(task);
-  });
+  }, "task:added", task);
 };
 
-export const removeTask = (id) => {
+export const removeTask = (taskId) => {
   setState(() => {
-    state.tasks = state.tasks.filter((task) => task.id !== id);
-  });
+    state.tasks = state.tasks.filter((task) => task.id !== taskId);
+  }, "task:removed", taskId);
 };
 
 export const clearTasks = () => {
   setState(() => {
     state.tasks = [];
-  });
+  }, "tasks:cleared");
 };
 
 export const filterTasks = () => {
   setState(() => {
     state.tasks = state.tasks.filter((task) => !task.done);
-  });
+  }, "tasks:filtered");
 };
 
 export const toggleTaskDone = (task) => {
   setState(() => {
     task.done = !task.done;
-  });
+  }, "task:toggled", task);
 };

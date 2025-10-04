@@ -1,6 +1,7 @@
 import { d, taskContainer } from "./dom.js";
 import { state } from "./state.js";
 import * as tasks from "./tasks.js";
+import { subscribe } from "./pubsub.js";
 
 const createElement = (tag, classes = [], text = "", id = "") => {
   const el = d.createElement(tag);
@@ -83,3 +84,38 @@ export const renderState = () => {
   taskContainer.innerHTML = "";
   taskContainer.append(fragment);
 };
+
+/* event handlers */
+const addTaskItem = (task) => {
+  const { tasks } = state;
+
+  if (tasks.length === 1) {
+    renderState();
+    return;
+  }
+
+  const list = taskContainer.querySelector(".task-list");
+  if (list) list.append(createTaskItem(task));
+};
+
+const removeTaskItem = (taskId) => {
+  const { tasks } = state;
+
+  const el = taskContainer.querySelector(`[data-id="${taskId}"]`);
+  if (el) el.remove();
+
+  if (tasks.length === 0) {
+    renderState();
+  }
+};
+
+const toggleTaskDoneClass = (task) => {
+  const el = taskContainer.querySelector(`[data-id="${task.id}"] .task-text`);
+  if (el) el.classList.toggle("task-done", task.done);
+};
+
+subscribe("task:added", addTaskItem);
+subscribe("task:removed", removeTaskItem);
+subscribe("task:toggled", toggleTaskDoneClass);
+subscribe("tasks:cleared", renderState);
+subscribe("tasks:filtered", renderState);
