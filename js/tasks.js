@@ -21,12 +21,11 @@ export const addTask = (task) => {
   });
 };
 
-export const removeTask = (id, taskElement) => {
+export const removeTask = (id) => {
   const newTasks = state.tasks.filter((task) => task.id !== id);
   setState(() => {
     state.tasks = newTasks;
   });
-  taskElement.remove();
 };
 
 export const clearTasks = () => {

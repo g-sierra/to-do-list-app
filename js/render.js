@@ -10,7 +10,7 @@ const createElement = (tag, classes = [], text = "", id = "") => {
   return el;
 };
 
-const createRemoveBtn = (taskId, taskElement) => {
+const createRemoveBtn = (taskId) => {
   const btn = d.createElement("button");
   btn.className = "btn btn-remove";
 
@@ -19,7 +19,7 @@ const createRemoveBtn = (taskId, taskElement) => {
 
   btn.append(i);
 
-  btn.addEventListener("click", () => tasks.removeTask(taskId, taskElement));
+  btn.addEventListener("click", () => tasks.removeTask(taskId));
 
   return btn;
 };
