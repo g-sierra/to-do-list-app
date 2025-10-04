@@ -26,6 +26,7 @@ const createRemoveBtn = (taskId) => {
 
 const createTaskItem = (task) => {
   const li = createElement("li", ["task-item"]);
+  li.dataset.id = task.id;
 
   const span = createElement("span", ["task-text"], task.text);
   span.classList.toggle("task-done", task.done);
@@ -35,6 +36,7 @@ const createTaskItem = (task) => {
   const btn = createRemoveBtn(task.id, li);
 
   li.append(span, btn);
+
   return li;
 };
 
