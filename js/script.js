@@ -27,7 +27,7 @@ const state = {
 const setState = (updater) => {
   updater();
   storeData();
-  render();
+  renderTaskList();
 };
 
 /* Task management */
@@ -137,7 +137,7 @@ const createUIBtnGroup = () => {
   );
   clearAllBtn.addEventListener("click", () => {
     clearTasks();
-    uiBtnGroup.remove();
+    group.remove();
   });
 
   group.append(clearCompletedBtn);
@@ -146,36 +146,38 @@ const createUIBtnGroup = () => {
   return group;
 };
 
-const render = () => {
+const renderTaskList = () => {
   const { tasks } = state;
-  const fragment = d.createDocumentFragment();
 
+  const fragment = d.createDocumentFragment();
   const taskList = createElement("ul", ["task-list"]);
+  fragment.append(taskList);
 
   if (tasks.length === 0) {
     taskList.append(createElement("p", ["info-message"], "No pending tasks"));
-    return;
   } else {
     tasks.forEach((task) => {
       taskList.append(createTaskItem(task));
     });
+    fragment.append(createUIBtnGroup());
   }
-
-  fragment.append(taskList);
-  fragment.append(createUIBtnGroup());
 
   taskContainer.innerHTML = "";
   taskContainer.append(fragment);
 };
 
-/* Event Listeners */
-addBtn.addEventListener("click", () => {
-  addTask(getTaskFromInput(taskInput));
-});
-taskInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
+const main = () => {
+  /* Event Listeners */
+  addBtn.addEventListener("click", () => {
     addTask(getTaskFromInput(taskInput));
-  }
-});
+  });
+  taskInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      addTask(getTaskFromInput(taskInput));
+    }
+  });
 
-render();
+  renderTaskList();
+};
+
+d.addEventListener("DOMContentLoaded", main);
