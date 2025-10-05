@@ -68,7 +68,6 @@
 
 html,
 body {
-  min-height: 100vh;
   font-family: var(--ff-mono);
   line-height: var(--lh-base);
   background-color: var(--clr-bg);
@@ -243,20 +242,10 @@ table {
 
 .ui-btn-group {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 0.2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-#clear-completed-btn {
-  grid-area: 1 / 3 / 2 / 4;
-  justify-self: end;
-}
-
-#clear-all-btn {
-  grid-area: 2 / 3 / 3 / 4;
-  justify-self: end;
 }
 
 .btn-clear {
