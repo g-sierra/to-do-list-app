@@ -66,14 +66,6 @@
   padding: 0;
 }
 
-html,
-body {
-  font-family: var(--ff-mono);
-  line-height: var(--lh-base);
-  background-color: var(--clr-bg);
-  color: var(--clr-text);
-}
-
 ul,
 ol {
   list-style: none;
@@ -110,6 +102,19 @@ table {
 }
 
 /* styling */
+
+html,
+body {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-md);
+  line-height: var(--lh-base);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+
+  @media (width < 600px) {
+    font-size: var(--fs-sm);
+  }
+}
 
 .wrapper {
   min-height: 100vh;
@@ -156,6 +161,9 @@ table {
 
 .task-input::placeholder {
   color: var(--clr-muted);
+  font-size: var(--fs-sm);
+
+  
 }
 
 .task-input:focus {
@@ -168,7 +176,12 @@ table {
   transition:
     background-color 0.1s,
     color 0.1s;
-  font-weight: var(--fw-bold)
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+
+  @media (width < 600px) {
+    font-size: var(--fs-sm);
+  }
 }
 
 .btn-primary {
@@ -184,7 +197,7 @@ table {
 .task-container {
   width: 100%;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
@@ -213,7 +226,7 @@ table {
 }
 
 .task-text {
-  font-size: var(--fs-md)
+  font-size: var(--fs-md);
 }
 
 .task-text:hover {
@@ -251,7 +264,6 @@ table {
 .btn-clear {
   border: 2px solid var(--clr-border);
   padding: 0.25rem 0.5rem;
-
 }
 
 .btn-clear:hover {
@@ -279,9 +291,9 @@ footer {
 }
 
 .footer-link {
-  color: var(--clr-primary)
+  color: var(--clr-primary);
 }
 
 .footer-link:hover {
-  color: var(--clr-primary-hover)
+  color: var(--clr-primary-hover);
 }
