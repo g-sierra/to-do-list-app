@@ -58,7 +58,12 @@ const createUIBtnGroup = () => {
     "Clear all tasks",
     "clear-all-btn",
   );
-  clearAllBtn.addEventListener("click", tasks.clearTasks);
+  clearAllBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear all tasks?")) {
+      tasks.clearTasks();
+    }
+    clearAllBtn.blur();
+  });
 
   group.append(clearCompletedBtn, clearAllBtn);
 
