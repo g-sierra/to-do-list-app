@@ -133,6 +133,10 @@ body {
   padding: 2rem;
   border: 3px solid var(--clr-border);
   border-radius: var(--border-radius);
+
+  @media (width < 600px) {
+    padding-inline: 1.33rem;
+  }
 }
 
 .title {
