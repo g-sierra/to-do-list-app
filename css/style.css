@@ -26,8 +26,8 @@
   --clr-warning: var(--bright-yellow);
   --clr-warning-hover: var(--yellow);
 
-  --clr-error: var(--bright-red);
-  --clr-error-hover: var(--red);
+  --clr-danger: var(--bright-red);
+  --clr-danger-hover: var(--red);
 
   --clr-accent: var(--bright-blue);
   --clr-accent-hover: var(--blue);
@@ -192,7 +192,8 @@ body {
   color: var(--clr-bg);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: var(--clr-primary-hover);
   color: var(--clr-text);
 }
@@ -253,13 +254,14 @@ body {
 }
 
 .btn-remove {
-  background-color: var(--clr-error);
+  background-color: var(--clr-danger);
   color: var(--clr-text);
   padding: 0.25rem 0.5rem;
 }
 
-.btn-remove:hover {
-  background-color: var(--clr-error-hover);
+.btn-remove:hover,
+.btn-remove:focus {
+  background-color: var(--clr-danger-hover);
 }
 
 .ui-btn-group {
@@ -270,13 +272,25 @@ body {
   gap: 0.5rem;
 }
 
-.btn-clear {
+.btn-secondary {
   border: 2px solid var(--clr-border);
   padding: 0.25rem 0.5rem;
 }
 
-.btn-clear:hover {
-  background-color: var(--clr-error);
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--clr-surface);
+  color: var(--clr-text);
+}
+
+.btn-clear-all {
+  border: 2px solid var(--clr-danger);
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-clear-all:hover,
+.btn-clear-all:focus {
+  background-color: var(--clr-danger);
   color: var(--clr-text);
 }
 

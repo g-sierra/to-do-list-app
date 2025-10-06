@@ -46,7 +46,7 @@ const createUIBtnGroup = () => {
 
   const clearCompletedBtn = createElement(
     "button",
-    ["btn", "btn-clear"],
+    ["btn", "btn-secondary"],
     "Clear completed tasks",
     "clear-completed-btn",
   );
@@ -54,7 +54,7 @@ const createUIBtnGroup = () => {
 
   const clearAllBtn = createElement(
     "button",
-    ["btn", "btn-clear"],
+    ["btn", "btn-clear-all"],
     "Clear all tasks",
     "clear-all-btn",
   );
