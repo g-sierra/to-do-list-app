@@ -136,6 +136,7 @@ body {
 }
 
 .title {
+  width: 100%;
   text-align: center;
   font-size: var(--fs-3xl);
   font-weight: var(--fw-bold);
