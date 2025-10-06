@@ -7,12 +7,19 @@ const handleAdd = () => {
   if (newTask) addTask(newTask);
 };
 
-const main = () => {
+const setEventListeners = () => {
   addBtn.addEventListener("click", handleAdd);
   taskInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") handleAdd();
   });
+  document.addEventListener("click", (e) => {
+    const button = e.target.closest("button");
+    if (button) button.blur();
+  });
+};
 
+const main = () => {
+  setEventListeners();
   renderState();
 };
 

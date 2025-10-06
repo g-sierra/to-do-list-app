@@ -162,46 +162,15 @@ body {
   background-color: var(--clr-surface);
   border: 2px solid var(--clr-border);
   border-radius: var(--border-radius);
+
+  &:focus {
+    border-color: var(--clr-primary);
+  }
 }
 
 .task-input::placeholder {
   color: var(--clr-muted);
   font-size: var(--fs-base);
-}
-
-.task-input:focus {
-  border-color: var(--clr-primary);
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  transition:
-    background-color 0.1s,
-    color 0.1s;
-  font-size: var(--fs-base);
-  font-weight: var(--fw-bold);
-
-  @media (width < 600px) {
-    font-size: var(--fs-sm);
-  }
-}
-
-.btn-primary {
-  background-color: var(--clr-primary);
-  color: var(--clr-bg);
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: var(--clr-primary-hover);
-  color: var(--clr-text);
-}
-
-#add-btn {
-  padding-inline: 0.8rem;
-  font-size: var(--fs-lg);
-  line-height: 1;
 }
 
 .task-container {
@@ -237,31 +206,20 @@ body {
 
 .task-text {
   font-size: var(--fs-md);
-}
 
-.task-text:hover {
-  color: var(--clr-text-alt);
-  cursor: pointer;
+  &:hover {
+    color: var(--clr-text-alt);
+    cursor: pointer;
+  }
 }
 
 .task-done {
   text-decoration: line-through;
   color: var(--clr-muted);
-}
 
-.task-text.task-done:hover {
-  color: var(--clr-muted);
-}
-
-.btn-remove {
-  background-color: var(--clr-danger);
-  color: var(--clr-text);
-  padding: 0.25rem 0.5rem;
-}
-
-.btn-remove:hover,
-.btn-remove:focus {
-  background-color: var(--clr-danger-hover);
+  &:hover {
+    color: var(--clr-muted);
+  }
 }
 
 .ui-btn-group {
@@ -270,28 +228,6 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.btn-secondary {
-  border: 2px solid var(--clr-border);
-  padding: 0.25rem 0.5rem;
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-  background-color: var(--clr-surface);
-  color: var(--clr-text);
-}
-
-.btn-clear-all {
-  border: 2px solid var(--clr-danger);
-  padding: 0.25rem 0.5rem;
-}
-
-.btn-clear-all:hover,
-.btn-clear-all:focus {
-  background-color: var(--clr-danger);
-  color: var(--clr-text);
 }
 
 .info-message {
@@ -315,8 +251,102 @@ footer {
 
 .footer-link {
   color: var(--clr-primary);
+  transition: color 0.1s;
+
+  &:active,
+  &:focus {
+    color: var(--clr-primary-hover);
+    outline: none;
+    text-decoration: underline;
+  }
 }
 
-.footer-link:hover {
-  color: var(--clr-primary-hover);
+/* buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition:
+    background-color 0.1s,
+    color 0.1s;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+
+  @media (width < 600px) {
+    font-size: var(--fs-sm);
+  }
+}
+
+.btn-primary {
+  background-color: var(--clr-primary);
+  color: var(--clr-bg);
+
+  &:active,
+  &:focus {
+    background-color: var(--clr-primary-hover);
+    color: var(--clr-text);
+  }
+}
+
+#add-btn {
+  padding-inline: 0.8rem;
+  font-size: var(--fs-lg);
+  line-height: 1;
+}
+
+.btn-remove {
+  background-color: var(--clr-danger);
+  color: var(--clr-text);
+  padding: 0.25rem 0.5rem;
+
+  &:active,
+  &:focus {
+    background-color: var(--clr-danger-hover);
+  }
+}
+
+.btn-secondary {
+  border: 2px solid var(--clr-border);
+  padding: 0.25rem 0.5rem;
+
+  &:active,
+  &:focus {
+    background-color: var(--clr-surface);
+    color: var(--clr-text);
+  }
+}
+
+.btn-clear-all {
+  border: 2px solid var(--clr-danger);
+  padding: 0.25rem 0.5rem;
+
+  &:active,
+  &:focus {
+    background-color: var(--clr-danger);
+    color: var(--clr-text);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background-color: var(--clr-primary-hover);
+    color: var(--clr-text);
+  }
+
+  .btn-remove:hover {
+    background-color: var(--clr-danger-hover);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--clr-surface);
+    color: var(--clr-text);
+  }
+
+  .btn-clear-all:hover {
+    background-color: var(--clr-danger);
+    color: var(--clr-text);
+  }
+
+  .footer-link:hover {
+    color: var(--clr-primary-hover);
+  }
 }
