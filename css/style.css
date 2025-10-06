@@ -161,9 +161,7 @@ body {
 
 .task-input::placeholder {
   color: var(--clr-muted);
-  font-size: var(--fs-sm);
-
-  
+  font-size: var(--fs-base);
 }
 
 .task-input:focus {
@@ -192,6 +190,12 @@ body {
 .btn-primary:hover {
   background-color: var(--clr-primary-hover);
   color: var(--clr-text);
+}
+
+#add-btn {
+  padding-inline: 0.8rem;
+  font-size: var(--fs-lg);
+  line-height: 1;
 }
 
 .task-container {
