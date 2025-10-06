@@ -118,7 +118,10 @@ body {
 
 .wrapper {
   min-height: 100vh;
-  padding-block: 4rem;
+  padding-block: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .app {
